@@ -91,12 +91,12 @@ const loadingSteps = [
 function ProfileHeader({ profile }: { profile: ProfileResult }) {
   return (
     <div className="flex items-start gap-6 mb-8">
-      <div className="w-24 h-24 bg-gradient-to-br from-purple-600 via-purple-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg shadow-purple-500/20">
-        <Github className="w-12 h-12 text-white" />
+      <div className="w-24 h-24 bg-[#FFD700] border-[5px] border-black flex items-center justify-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <Github className="w-12 h-12 text-black" />
       </div>
       <div className="flex-1">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent mb-2">Developer Profile</h1>
-        <p className="text-gray-200 text-lg leading-relaxed">
+        <h1 className="text-4xl font-black text-black mb-3">Developer Profile</h1>
+        <p className="text-black text-lg leading-relaxed font-bold">
           {profile.developer_summary || 'Analyzing developer profile...'}
         </p>
       </div>
@@ -107,63 +107,63 @@ function ProfileHeader({ profile }: { profile: ProfileResult }) {
 // Quick Stats Sidebar Component
 function QuickStatsSidebar({ profile, metadata }: { profile: ProfileResult; metadata?: ProfileMetadata }) {
   return (
-    <Card className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-purple-500/20 backdrop-blur-sm">
-      <CardHeader>
-        <CardTitle className="text-white flex items-center gap-2">
-          <Activity className="w-5 h-5 text-purple-400" />
+    <Card className="bg-white border-[5px] border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+      <CardHeader className="border-b-[4px] border-black bg-[#00FFFF] pb-4">
+        <CardTitle className="text-black font-black flex items-center gap-2 text-xl">
+          <Activity className="w-6 h-6 text-black" />
           Quick Stats
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div>
-          <div className="text-sm text-gray-400 mb-1">Repositories Analyzed</div>
-          <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+      <CardContent className="space-y-5 pt-6">
+        <div className="bg-[#FFEB3B] border-[4px] border-black p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div className="text-sm text-black font-bold mb-2">Repositories Analyzed</div>
+          <div className="text-4xl font-black text-black">
             {metadata?.repositories_analyzed || 0}
           </div>
         </div>
 
-        <Separator className="bg-gradient-to-r from-purple-500/20 via-purple-500/50 to-purple-500/20" />
+        <Separator className="bg-black h-[3px]" />
 
         <div>
-          <div className="text-sm text-gray-400 mb-2">Primary Languages</div>
+          <div className="text-sm text-black font-bold mb-3">Primary Languages</div>
           <div className="flex flex-wrap gap-2">
             {profile.technical_skills.primary_languages.length > 0 ? (
               profile.technical_skills.primary_languages.map((lang, i) => (
-                <Badge key={i} variant="secondary" className="bg-gradient-to-r from-purple-600/30 to-blue-600/30 text-purple-200 border-purple-400/40">
+                <Badge key={i} className="bg-[#FF00FF] text-white border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] font-bold px-3 py-1 rounded-none hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all">
                   {lang}
                 </Badge>
               ))
             ) : (
-              <span className="text-sm text-gray-500">No data available</span>
+              <span className="text-sm text-gray-600 font-bold">No data available</span>
             )}
           </div>
         </div>
 
-        <Separator className="bg-gradient-to-r from-purple-500/20 via-purple-500/50 to-purple-500/20" />
+        <Separator className="bg-black h-[3px]" />
 
         <div>
-          <div className="text-sm text-gray-400 mb-2">Domain Expertise</div>
+          <div className="text-sm text-black font-bold mb-3">Domain Expertise</div>
           <div className="space-y-2">
             {profile.technical_skills.domain_expertise.length > 0 ? (
               profile.technical_skills.domain_expertise.map((domain, i) => (
-                <div key={i} className="text-sm text-gray-200">
+                <div key={i} className="text-sm text-black font-bold bg-[#F5F5F0] border-[3px] border-black p-2">
                   {domain}
                 </div>
               ))
             ) : (
-              <span className="text-sm text-gray-500">No data available</span>
+              <span className="text-sm text-gray-600 font-bold">No data available</span>
             )}
           </div>
         </div>
 
-        <Separator className="bg-gradient-to-r from-purple-500/20 via-purple-500/50 to-purple-500/20" />
+        <Separator className="bg-black h-[3px]" />
 
-        <div>
-          <div className="text-sm text-gray-400 mb-1">Activity Pattern</div>
-          <div className="text-sm text-gray-200">
+        <div className="bg-[#84CC16] border-[4px] border-black p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div className="text-sm text-black font-bold mb-1">Activity Pattern</div>
+          <div className="text-sm text-black font-bold">
             {profile.working_patterns.commit_frequency || 'No data'}
           </div>
-          <div className="text-xs text-gray-400 mt-1">
+          <div className="text-xs text-black font-semibold mt-1">
             {profile.working_patterns.consistency || ''}
           </div>
         </div>
@@ -175,63 +175,63 @@ function QuickStatsSidebar({ profile, metadata }: { profile: ProfileResult; meta
 // Skills Breakdown Card Component
 function SkillsBreakdown({ skills }: { skills: TechnicalSkills }) {
   return (
-    <Card className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-blue-500/20 backdrop-blur-sm">
-      <CardHeader>
-        <CardTitle className="text-white flex items-center gap-2">
-          <Code className="w-5 h-5 text-blue-400" />
+    <Card className="bg-white border-[5px] border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+      <CardHeader className="border-b-[4px] border-black bg-[#0EA5E9] pb-4">
+        <CardTitle className="text-white font-black flex items-center gap-2 text-xl">
+          <Code className="w-6 h-6 text-white" />
           Technical Skills Breakdown
         </CardTitle>
         {skills.proficiency_level && (
-          <CardDescription className="text-gray-300">
-            Proficiency Level: <span className="text-blue-400 font-semibold">{skills.proficiency_level}</span>
+          <CardDescription className="text-white font-bold text-base mt-2">
+            Proficiency Level: <span className="text-[#FFD700] font-black">{skills.proficiency_level}</span>
           </CardDescription>
         )}
       </CardHeader>
-      <CardContent className="space-y-6">
+      <CardContent className="space-y-6 pt-6">
         <div>
-          <h4 className="text-sm font-semibold text-gray-200 mb-3">Primary Languages</h4>
-          <div className="flex flex-wrap gap-2">
+          <h4 className="text-base font-black text-black mb-3 uppercase">Primary Languages</h4>
+          <div className="flex flex-wrap gap-3">
             {skills.primary_languages.length > 0 ? (
               skills.primary_languages.map((lang, i) => (
-                <Badge key={i} className="bg-gradient-to-r from-blue-600/30 to-cyan-600/30 text-blue-200 border-blue-400/40">
+                <Badge key={i} className="bg-[#00FFFF] text-black border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold px-4 py-2 text-sm rounded-none hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
                   {lang}
                 </Badge>
               ))
             ) : (
-              <span className="text-sm text-gray-500">No languages identified</span>
+              <span className="text-sm text-gray-600 font-bold">No languages identified</span>
             )}
           </div>
         </div>
 
         <div>
-          <h4 className="text-sm font-semibold text-gray-200 mb-3">Frameworks & Tools</h4>
-          <div className="flex flex-wrap gap-2">
+          <h4 className="text-base font-black text-black mb-3 uppercase">Frameworks & Tools</h4>
+          <div className="flex flex-wrap gap-3">
             {skills.frameworks_tools.length > 0 ? (
               skills.frameworks_tools.map((tool, i) => (
-                <Badge key={i} variant="outline" className="text-gray-200 border-gray-500 hover:border-blue-400/50 transition-colors">
+                <Badge key={i} className="bg-white text-black border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] font-bold px-4 py-2 text-sm rounded-none hover:bg-[#FFEB3B] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
                   {tool}
                 </Badge>
               ))
             ) : (
-              <span className="text-sm text-gray-500">No frameworks identified</span>
+              <span className="text-sm text-gray-600 font-bold">No frameworks identified</span>
             )}
           </div>
         </div>
 
         <div>
-          <h4 className="text-sm font-semibold text-gray-200 mb-3">Domain Expertise</h4>
-          <div className="space-y-3">
+          <h4 className="text-base font-black text-black mb-4 uppercase">Domain Expertise</h4>
+          <div className="space-y-4">
             {skills.domain_expertise.length > 0 ? (
               skills.domain_expertise.map((domain, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <div className="flex-1">
-                    <div className="text-sm text-gray-200 mb-1.5">{domain}</div>
-                    <Progress value={75} className="h-2 bg-gray-700/50 [&>div]:bg-gradient-to-r [&>div]:from-purple-500 [&>div]:to-blue-500" />
+                <div key={i} className="border-[4px] border-black p-3 bg-[#F5F5F0]">
+                  <div className="text-sm text-black font-bold mb-2">{domain}</div>
+                  <div className="relative h-6 bg-white border-[3px] border-black">
+                    <div className="absolute inset-0 bg-[#84CC16] border-r-[3px] border-black" style={{ width: '75%' }}></div>
                   </div>
                 </div>
               ))
             ) : (
-              <span className="text-sm text-gray-500">No domain expertise identified</span>
+              <span className="text-sm text-gray-600 font-bold">No domain expertise identified</span>
             )}
           </div>
         </div>
@@ -247,28 +247,28 @@ function WorkingStyleInsights({ problemSolving, collaboration, workingPatterns }
   workingPatterns: WorkingPatterns
 }) {
   return (
-    <Card className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-purple-500/20 backdrop-blur-sm">
-      <CardHeader>
-        <CardTitle className="text-white flex items-center gap-2">
-          <Lightbulb className="w-5 h-5 text-yellow-400" />
+    <Card className="bg-white border-[5px] border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+      <CardHeader className="border-b-[4px] border-black bg-[#FF00FF] pb-4">
+        <CardTitle className="text-white font-black flex items-center gap-2 text-xl">
+          <Lightbulb className="w-6 h-6 text-white" />
           Working Style & Insights
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-6">
-        <div>
-          <h4 className="text-sm font-semibold text-purple-300 mb-2 flex items-center gap-2">
-            <Target className="w-4 h-4" />
+      <CardContent className="space-y-6 pt-6">
+        <div className="border-[4px] border-black p-4 bg-[#FFEB3B]">
+          <h4 className="text-base font-black text-black mb-3 flex items-center gap-2 uppercase">
+            <Target className="w-5 h-5" />
             Problem-Solving Approach
           </h4>
-          <p className="text-gray-200 text-sm mb-3">
+          <p className="text-black text-sm mb-4 font-bold">
             {problemSolving.approach || 'No approach data available'}
           </p>
           {problemSolving.strengths.length > 0 && (
-            <div className="space-y-1">
-              <div className="text-xs text-gray-400 mb-1">Key Strengths:</div>
+            <div className="space-y-2">
+              <div className="text-xs text-black font-black mb-2 uppercase">Key Strengths:</div>
               {problemSolving.strengths.map((strength, i) => (
-                <div key={i} className="text-sm text-gray-200 flex items-start gap-2">
-                  <Star className="w-3 h-3 text-yellow-400 mt-1 flex-shrink-0" />
+                <div key={i} className="text-sm text-black font-bold flex items-start gap-2 bg-white border-[3px] border-black p-2">
+                  <Star className="w-4 h-4 text-black mt-0.5 flex-shrink-0" />
                   <span>{strength}</span>
                 </div>
               ))}
@@ -276,54 +276,56 @@ function WorkingStyleInsights({ problemSolving, collaboration, workingPatterns }
           )}
         </div>
 
-        <Separator className="bg-gradient-to-r from-purple-500/20 via-purple-500/50 to-purple-500/20" />
+        <Separator className="bg-black h-[3px]" />
 
-        <div>
-          <h4 className="text-sm font-semibold text-blue-300 mb-2 flex items-center gap-2">
-            <Users className="w-4 h-4" />
+        <div className="border-[4px] border-black p-4 bg-[#00FFFF]">
+          <h4 className="text-base font-black text-black mb-3 flex items-center gap-2 uppercase">
+            <Users className="w-5 h-5" />
             Collaboration Style
           </h4>
-          <div className="space-y-2">
+          <div className="space-y-3">
             {collaboration.communication_quality && (
-              <div>
-                <span className="text-xs text-gray-400">Communication: </span>
-                <span className="text-sm text-gray-200">{collaboration.communication_quality}</span>
+              <div className="bg-white border-[3px] border-black p-2">
+                <span className="text-xs text-black font-black uppercase">Communication: </span>
+                <span className="text-sm text-black font-bold">{collaboration.communication_quality}</span>
               </div>
             )}
             {collaboration.team_interaction && (
-              <div>
-                <span className="text-xs text-gray-400">Team Interaction: </span>
-                <span className="text-sm text-gray-200">{collaboration.team_interaction}</span>
+              <div className="bg-white border-[3px] border-black p-2">
+                <span className="text-xs text-black font-black uppercase">Team Interaction: </span>
+                <span className="text-sm text-black font-bold">{collaboration.team_interaction}</span>
               </div>
             )}
             {collaboration.review_participation && (
-              <div>
-                <span className="text-xs text-gray-400">Code Reviews: </span>
-                <span className="text-sm text-gray-200">{collaboration.review_participation}</span>
+              <div className="bg-white border-[3px] border-black p-2">
+                <span className="text-xs text-black font-black uppercase">Code Reviews: </span>
+                <span className="text-sm text-black font-bold">{collaboration.review_participation}</span>
               </div>
             )}
             {!collaboration.communication_quality && !collaboration.team_interaction && !collaboration.review_participation && (
-              <span className="text-sm text-gray-500">No collaboration data available</span>
+              <span className="text-sm text-gray-600 font-bold">No collaboration data available</span>
             )}
           </div>
         </div>
 
-        <Separator className="bg-gradient-to-r from-purple-500/20 via-purple-500/50 to-purple-500/20" />
+        <Separator className="bg-black h-[3px]" />
 
-        <div>
-          <h4 className="text-sm font-semibold text-emerald-300 mb-2 flex items-center gap-2">
-            <Clock className="w-4 h-4" />
+        <div className="border-[4px] border-black p-4 bg-[#84CC16]">
+          <h4 className="text-base font-black text-black mb-3 flex items-center gap-2 uppercase">
+            <Clock className="w-5 h-5" />
             Working Patterns
           </h4>
-          <div className="space-y-2">
+          <div className="space-y-3">
             {workingPatterns.focus_areas.length > 0 && (
               <div>
-                <div className="text-xs text-gray-400 mb-1">Focus Areas:</div>
-                {workingPatterns.focus_areas.map((area, i) => (
-                  <Badge key={i} variant="outline" className="text-emerald-300 border-emerald-500/40 mr-2 mb-2 hover:border-emerald-400 transition-colors">
-                    {area}
-                  </Badge>
-                ))}
+                <div className="text-xs text-black font-black mb-2 uppercase">Focus Areas:</div>
+                <div className="flex flex-wrap gap-2">
+                  {workingPatterns.focus_areas.map((area, i) => (
+                    <Badge key={i} className="bg-white text-black border-[3px] border-black font-bold px-3 py-1 rounded-none hover:bg-[#FFD700] transition-all">
+                      {area}
+                    </Badge>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -331,12 +333,12 @@ function WorkingStyleInsights({ problemSolving, collaboration, workingPatterns }
 
         {problemSolving.code_quality_indicators.length > 0 && (
           <>
-            <Separator className="bg-gradient-to-r from-purple-500/20 via-purple-500/50 to-purple-500/20" />
-            <div>
-              <h4 className="text-sm font-semibold text-orange-300 mb-2">Code Quality Indicators</h4>
-              <div className="space-y-1">
+            <Separator className="bg-black h-[3px]" />
+            <div className="border-[4px] border-black p-4 bg-[#FF00FF]">
+              <h4 className="text-base font-black text-white mb-3 uppercase">Code Quality Indicators</h4>
+              <div className="space-y-2">
                 {problemSolving.code_quality_indicators.map((indicator, i) => (
-                  <div key={i} className="text-sm text-gray-200">• {indicator}</div>
+                  <div key={i} className="text-sm text-white font-bold bg-black/20 border-[2px] border-white p-2">• {indicator}</div>
                 ))}
               </div>
             </div>
@@ -352,19 +354,19 @@ function UniqueInsights({ insights }: { insights: string[] }) {
   if (!insights || insights.length === 0) return null
 
   return (
-    <Card className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-emerald-500/20 backdrop-blur-sm">
-      <CardHeader>
-        <CardTitle className="text-white flex items-center gap-2">
-          <TrendingUp className="w-5 h-5 text-emerald-400" />
+    <Card className="bg-white border-[5px] border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+      <CardHeader className="border-b-[4px] border-black bg-[#84CC16] pb-4">
+        <CardTitle className="text-black font-black flex items-center gap-2 text-xl">
+          <TrendingUp className="w-6 h-6 text-black" />
           Notable Insights
         </CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="space-y-3">
+      <CardContent className="pt-6">
+        <div className="space-y-4">
           {insights.map((insight, i) => (
-            <div key={i} className="flex items-start gap-3 p-4 bg-gradient-to-r from-gray-900/60 to-gray-800/40 rounded-lg border border-purple-500/20 hover:border-purple-400/40 transition-colors">
-              <Lightbulb className="w-5 h-5 text-yellow-400 mt-0.5 flex-shrink-0" />
-              <p className="text-gray-200 text-sm leading-relaxed">{insight}</p>
+            <div key={i} className="flex items-start gap-4 p-4 bg-[#FFEB3B] border-[4px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
+              <Lightbulb className="w-6 h-6 text-black mt-0.5 flex-shrink-0" />
+              <p className="text-black text-sm leading-relaxed font-bold">{insight}</p>
             </div>
           ))}
         </div>
@@ -382,21 +384,21 @@ function RecommendationsSection({ recommendations }: { recommendations: Recommen
   if (!hasData) return null
 
   return (
-    <Card className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-purple-500/20 backdrop-blur-sm">
-      <CardHeader>
-        <CardTitle className="text-white flex items-center gap-2">
-          <Target className="w-5 h-5 text-purple-400" />
+    <Card className="bg-white border-[5px] border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+      <CardHeader className="border-b-[4px] border-black bg-[#FF00FF] pb-4">
+        <CardTitle className="text-white font-black flex items-center gap-2 text-xl">
+          <Target className="w-6 h-6 text-white" />
           Recommendations
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-6">
+      <CardContent className="space-y-6 pt-6">
         {recommendations.ideal_projects.length > 0 && (
-          <div>
-            <h4 className="text-sm font-semibold text-purple-300 mb-2">Ideal Projects</h4>
+          <div className="border-[4px] border-black p-4 bg-[#00FFFF]">
+            <h4 className="text-base font-black text-black mb-3 uppercase">Ideal Projects</h4>
             <div className="space-y-2">
               {recommendations.ideal_projects.map((project, i) => (
-                <div key={i} className="text-sm text-gray-200 flex items-start gap-2">
-                  <GitBranch className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
+                <div key={i} className="text-sm text-black font-bold flex items-start gap-2 bg-white border-[3px] border-black p-3">
+                  <GitBranch className="w-4 h-4 text-black mt-0.5 flex-shrink-0" />
                   <span>{project}</span>
                 </div>
               ))}
@@ -406,23 +408,23 @@ function RecommendationsSection({ recommendations }: { recommendations: Recommen
 
         {recommendations.team_fit && (
           <>
-            {recommendations.ideal_projects.length > 0 && <Separator className="bg-gradient-to-r from-purple-500/20 via-purple-500/50 to-purple-500/20" />}
-            <div>
-              <h4 className="text-sm font-semibold text-blue-300 mb-2">Team Fit</h4>
-              <p className="text-sm text-gray-200">{recommendations.team_fit}</p>
+            {recommendations.ideal_projects.length > 0 && <Separator className="bg-black h-[3px]" />}
+            <div className="border-[4px] border-black p-4 bg-[#FFD700]">
+              <h4 className="text-base font-black text-black mb-2 uppercase">Team Fit</h4>
+              <p className="text-sm text-black font-bold">{recommendations.team_fit}</p>
             </div>
           </>
         )}
 
         {recommendations.growth_opportunities.length > 0 && (
           <>
-            <Separator className="bg-gradient-to-r from-purple-500/20 via-purple-500/50 to-purple-500/20" />
-            <div>
-              <h4 className="text-sm font-semibold text-emerald-300 mb-2">Growth Opportunities</h4>
+            <Separator className="bg-black h-[3px]" />
+            <div className="border-[4px] border-black p-4 bg-[#84CC16]">
+              <h4 className="text-base font-black text-black mb-3 uppercase">Growth Opportunities</h4>
               <div className="space-y-2">
                 {recommendations.growth_opportunities.map((opportunity, i) => (
-                  <div key={i} className="text-sm text-gray-200 flex items-start gap-2">
-                    <TrendingUp className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <div key={i} className="text-sm text-black font-bold flex items-start gap-2 bg-white border-[3px] border-black p-3">
+                    <TrendingUp className="w-4 h-4 text-black mt-0.5 flex-shrink-0" />
                     <span>{opportunity}</span>
                   </div>
                 ))}
@@ -439,33 +441,34 @@ function RecommendationsSection({ recommendations }: { recommendations: Recommen
 function LoadingIndicator({ currentStep }: { currentStep: number }) {
   return (
     <div className="max-w-2xl mx-auto">
-      <Card className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-purple-500/30 backdrop-blur-sm shadow-xl shadow-purple-500/10">
-        <CardContent className="pt-6">
-          <div className="flex flex-col items-center gap-6">
+      <Card className="bg-white border-[5px] border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+        <CardContent className="pt-8 pb-8">
+          <div className="flex flex-col items-center gap-8">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
-              <Loader2 className="w-12 h-12 text-purple-400 animate-spin relative z-10" />
+              <div className="w-20 h-20 bg-[#FF00FF] border-[5px] border-black flex items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+                <Loader2 className="w-10 h-10 text-white animate-spin" />
+              </div>
             </div>
             <div className="text-center">
-              <h3 className="text-xl font-semibold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-2">
+              <h3 className="text-2xl font-black text-black mb-3 uppercase">
                 Analyzing GitHub Profile
               </h3>
-              <p className="text-gray-300 text-sm">
+              <p className="text-black text-base font-bold">
                 {loadingSteps[currentStep] || 'Processing...'}
               </p>
             </div>
-            <div className="w-full space-y-2">
+            <div className="w-full space-y-3 bg-[#F5F5F0] border-[4px] border-black p-5">
               {loadingSteps.map((step, i) => (
-                <div key={i} className="flex items-center gap-3">
+                <div key={i} className="flex items-center gap-4">
                   <div className={cn(
-                    "w-2 h-2 rounded-full flex-shrink-0",
-                    i < currentStep ? "bg-emerald-400 shadow-sm shadow-emerald-400/50" :
-                    i === currentStep ? "bg-purple-400 animate-pulse shadow-sm shadow-purple-400/50" :
-                    "bg-gray-600"
+                    "w-4 h-4 border-[3px] border-black flex-shrink-0",
+                    i < currentStep ? "bg-[#84CC16]" :
+                    i === currentStep ? "bg-[#FFD700]" :
+                    "bg-white"
                   )} />
                   <span className={cn(
-                    "text-sm",
-                    i <= currentStep ? "text-gray-200" : "text-gray-500"
+                    "text-sm font-bold",
+                    i <= currentStep ? "text-black" : "text-gray-400"
                   )}>
                     {step}
                   </span>
@@ -544,7 +547,7 @@ export default function Home() {
   // Loading State
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-950 via-purple-950/40 to-blue-950/30 p-6 flex items-center justify-center">
+      <div className="min-h-screen bg-[#FFFEF2] p-6 flex items-center justify-center">
         <LoadingIndicator currentStep={currentStep} />
       </div>
     )
@@ -555,16 +558,16 @@ export default function Home() {
     const profile = profileData.result as ProfileResult
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-950 via-purple-950/40 to-blue-950/30">
+      <div className="min-h-screen bg-[#FFFEF2]">
         <div className="container mx-auto px-6 py-8">
           {/* Header with back button */}
           <div className="mb-8">
             <Button
               variant="ghost"
               onClick={resetToSearch}
-              className="text-gray-300 hover:text-white hover:bg-purple-500/10 mb-4"
+              className="text-black font-bold hover:text-white hover:bg-black border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all rounded-none px-4 py-2"
             >
-              <ArrowLeft className="w-4 h-4 mr-2" />
+              <ArrowLeft className="w-5 h-5 mr-2" />
               Analyze Another Profile
             </Button>
           </div>
@@ -582,15 +585,15 @@ export default function Home() {
 
               {/* Error handling */}
               {profileData.status === 'error' && (
-                <Card className="bg-gradient-to-br from-red-900/30 to-red-800/20 border-red-500/40 backdrop-blur-sm">
+                <Card className="bg-[#FF00FF] border-[5px] border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                   <CardContent className="pt-6">
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-red-500/30 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-red-300 text-xl">!</span>
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 bg-white border-[3px] border-black flex items-center justify-center flex-shrink-0">
+                        <span className="text-black text-2xl font-black">!</span>
                       </div>
                       <div>
-                        <h3 className="text-red-300 font-semibold mb-1">Analysis Error</h3>
-                        <p className="text-gray-200 text-sm">
+                        <h3 className="text-white font-black mb-2 text-lg uppercase">Analysis Error</h3>
+                        <p className="text-white text-sm font-bold">
                           {profileData.message || 'Unable to analyze profile'}
                         </p>
                       </div>
@@ -617,13 +620,13 @@ export default function Home() {
 
               {/* Metadata Footer */}
               {profileData.metadata && (
-                <div className="text-center text-sm text-gray-400 pt-4">
-                  <div className="flex items-center justify-center gap-2">
-                    <Calendar className="w-4 h-4 text-purple-400" />
+                <div className="text-center text-sm text-black font-bold pt-6 bg-[#F5F5F0] border-[4px] border-black p-4">
+                  <div className="flex items-center justify-center gap-3 flex-wrap">
+                    <Calendar className="w-5 h-5 text-black" />
                     <span>
                       Analyzed on {new Date(profileData.metadata.timestamp).toLocaleDateString()}
                     </span>
-                    <span className="text-purple-400">•</span>
+                    <span className="text-black font-black">•</span>
                     <span>
                       {profileData.metadata.data_points_collected} data points collected
                     </span>
@@ -639,86 +642,85 @@ export default function Home() {
 
   // Homepage/Search View
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-purple-950/40 to-blue-950/30">
+    <div className="min-h-screen bg-[#FFFEF2]">
       <ScrollArea className="h-screen">
         <div className="container mx-auto px-6 py-16">
           {/* Hero Section */}
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <div className="flex items-center justify-center mb-6">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl blur-2xl opacity-30"></div>
-                <div className="relative w-16 h-16 bg-gradient-to-br from-purple-600 via-purple-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/30">
-                  <Github className="w-10 h-10 text-white" />
-                </div>
+            <div className="flex items-center justify-center mb-8">
+              <div className="w-24 h-24 bg-[#FFD700] border-[5px] border-black flex items-center justify-center shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+                <Github className="w-14 h-14 text-black" />
               </div>
             </div>
 
-            <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <h1 className="text-7xl font-black mb-6 text-black uppercase tracking-tight">
               SkillSync
             </h1>
 
-            <p className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-4">
+            <p className="text-4xl font-black text-black mb-6 uppercase">
               Empathize at Scale
             </p>
 
-            <p className="text-xl text-gray-200 mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-black mb-12 max-w-2xl mx-auto leading-relaxed font-bold">
               Understand developers beyond their code. Analyze GitHub profiles to discover
               working styles, collaboration patterns, and technical strengths.
             </p>
 
             {/* Search Input */}
             <div className="max-w-2xl mx-auto mb-4">
-              <div className="flex gap-3">
+              <div className="flex gap-4 flex-col sm:flex-row">
                 <div className="relative flex-1">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-black z-10" />
                   <Input
                     type="text"
                     placeholder="Enter GitHub username (e.g., torvalds)"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     onKeyPress={handleKeyPress}
-                    className="pl-12 h-14 text-lg bg-gray-800/60 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                    className="pl-14 h-16 text-lg bg-white border-[4px] border-black text-black placeholder:text-gray-500 font-bold shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] focus:translate-x-[2px] focus:translate-y-[2px] focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all rounded-none"
                   />
                 </div>
                 <Button
                   onClick={analyzeProfile}
                   disabled={loading || !username.trim()}
-                  className="h-14 px-8 bg-gradient-to-r from-purple-600 via-purple-500 to-blue-600 hover:from-purple-700 hover:via-purple-600 hover:to-blue-700 text-white font-semibold text-lg shadow-lg shadow-purple-500/20 hover:shadow-purple-500/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="h-16 px-8 bg-[#FF00FF] hover:bg-[#00FFFF] text-white font-black text-lg shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all disabled:opacity-50 disabled:cursor-not-allowed border-[4px] border-black rounded-none uppercase"
                 >
                   Analyze Profile
                 </Button>
               </div>
               {error && (
-                <p className="text-red-400 text-sm mt-2 text-left">{error}</p>
+                <div className="bg-[#FF00FF] border-[4px] border-black p-3 mt-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                  <p className="text-white text-sm font-bold text-left">{error}</p>
+                </div>
               )}
             </div>
           </div>
 
           {/* Sample Profiles Showcase */}
           <div className="max-w-5xl mx-auto mb-16">
-            <h2 className="text-2xl font-bold text-white mb-6 text-center">
+            <h2 className="text-3xl font-black text-black mb-8 text-center uppercase">
               Try Sample Profiles
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {sampleProfiles.map((profile) => (
                 <Card
                   key={profile.username}
-                  className="bg-gray-800/60 border-purple-500/20 hover:border-purple-400/50 hover:bg-gray-800/80 transition-all cursor-pointer group backdrop-blur-sm"
+                  className="bg-white border-[5px] border-black hover:bg-[#FFEB3B] transition-all cursor-pointer group shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-none"
                   onClick={() => handleSampleProfile(profile.username)}
                 >
                   <CardContent className="pt-6">
-                    <div className="flex items-center gap-4 mb-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-purple-600/30 to-blue-600/30 rounded-full flex items-center justify-center group-hover:from-purple-500/40 group-hover:to-blue-500/40 transition-all">
-                        <Github className="w-6 h-6 text-purple-400 group-hover:text-purple-300 transition-colors" />
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-14 h-14 bg-[#00FFFF] border-[4px] border-black flex items-center justify-center group-hover:bg-[#FF00FF] transition-all">
+                        <Github className="w-7 h-7 text-black" />
                       </div>
                       <div>
-                        <div className="font-semibold text-white group-hover:text-purple-300 transition-colors">
+                        <div className="font-black text-black text-lg">
                           {profile.name}
                         </div>
-                        <div className="text-sm text-gray-400">@{profile.username}</div>
+                        <div className="text-sm text-gray-700 font-bold">@{profile.username}</div>
                       </div>
                     </div>
-                    <Badge className="bg-gradient-to-r from-purple-600/30 to-blue-600/30 text-purple-200 border-purple-400/40">
+                    <Badge className="bg-[#84CC16] text-black border-[3px] border-black font-bold px-3 py-1 rounded-none">
                       {profile.skill}
                     </Badge>
                   </CardContent>
@@ -729,42 +731,42 @@ export default function Home() {
 
           {/* How It Works Section */}
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl font-bold text-white mb-8 text-center">
+            <h2 className="text-3xl font-black text-black mb-10 text-center uppercase">
               How It Works
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-600/30 to-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-purple-500/10">
-                  <Search className="w-8 h-8 text-purple-400" />
+                <div className="w-20 h-20 bg-[#FFD700] border-[5px] border-black flex items-center justify-center mx-auto mb-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+                  <Search className="w-10 h-10 text-black" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
+                <h3 className="text-xl font-black text-black mb-3 uppercase">
                   1. Enter Username
                 </h3>
-                <p className="text-gray-300 text-sm">
+                <p className="text-black text-sm font-bold">
                   Simply provide a GitHub username to get started with the analysis
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-600/30 to-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/10">
-                  <Code className="w-8 h-8 text-blue-400" />
+                <div className="w-20 h-20 bg-[#00FFFF] border-[5px] border-black flex items-center justify-center mx-auto mb-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+                  <Code className="w-10 h-10 text-black" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
+                <h3 className="text-xl font-black text-black mb-3 uppercase">
                   2. AI Analysis
                 </h3>
-                <p className="text-gray-300 text-sm">
+                <p className="text-black text-sm font-bold">
                   Our AI analyzes repositories, commits, and collaboration patterns
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-emerald-600/30 to-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-emerald-500/10">
-                  <TrendingUp className="w-8 h-8 text-emerald-400" />
+                <div className="w-20 h-20 bg-[#84CC16] border-[5px] border-black flex items-center justify-center mx-auto mb-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+                  <TrendingUp className="w-10 h-10 text-black" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
+                <h3 className="text-xl font-black text-black mb-3 uppercase">
                   3. Get Insights
                 </h3>
-                <p className="text-gray-300 text-sm">
+                <p className="text-black text-sm font-bold">
                   Receive comprehensive insights about skills, style, and strengths
                 </p>
               </div>
@@ -772,8 +774,10 @@ export default function Home() {
           </div>
 
           {/* Footer */}
-          <div className="text-center mt-16 text-gray-400 text-sm">
-            <p>Powered by AI Agent Technology</p>
+          <div className="text-center mt-16">
+            <div className="inline-block bg-black text-white font-black text-sm px-6 py-3 border-[4px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] uppercase">
+              Powered by AI Agent Technology
+            </div>
           </div>
         </div>
       </ScrollArea>
