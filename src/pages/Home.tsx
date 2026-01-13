@@ -127,8 +127,8 @@ function QuickStatsSidebar({ profile, metadata }: { profile: ProfileResult; meta
         <div>
           <div className="text-sm text-black font-bold mb-3">Primary Languages</div>
           <div className="flex flex-wrap gap-2">
-            {profile.technical_skills.primary_languages.length > 0 ? (
-              profile.technical_skills.primary_languages.map((lang, i) => (
+            {profile.technical_skills?.primary_languages?.length > 0 ? (
+              profile.technical_skills?.primary_languages?.map((lang, i) => (
                 <Badge key={i} className="bg-[#FF00FF] text-white border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] font-bold px-3 py-1 rounded-none hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all">
                   {lang}
                 </Badge>
@@ -144,8 +144,8 @@ function QuickStatsSidebar({ profile, metadata }: { profile: ProfileResult; meta
         <div>
           <div className="text-sm text-black font-bold mb-3">Domain Expertise</div>
           <div className="space-y-2">
-            {profile.technical_skills.domain_expertise.length > 0 ? (
-              profile.technical_skills.domain_expertise.map((domain, i) => (
+            {profile.technical_skills?.domain_expertise?.length > 0 ? (
+              profile.technical_skills?.domain_expertise?.map((domain, i) => (
                 <div key={i} className="text-sm text-black font-bold bg-[#F5F5F0] border-[3px] border-black p-2">
                   {domain}
                 </div>
@@ -161,10 +161,10 @@ function QuickStatsSidebar({ profile, metadata }: { profile: ProfileResult; meta
         <div className="bg-[#84CC16] border-[4px] border-black p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
           <div className="text-sm text-black font-bold mb-1">Activity Pattern</div>
           <div className="text-sm text-black font-bold">
-            {profile.working_patterns.commit_frequency || 'No data'}
+            {profile.working_patterns?.commit_frequency || 'No data'}
           </div>
           <div className="text-xs text-black font-semibold mt-1">
-            {profile.working_patterns.consistency || ''}
+            {profile.working_patterns?.consistency || ''}
           </div>
         </div>
       </CardContent>
@@ -173,7 +173,9 @@ function QuickStatsSidebar({ profile, metadata }: { profile: ProfileResult; meta
 }
 
 // Skills Breakdown Card Component
-function SkillsBreakdown({ skills }: { skills: TechnicalSkills }) {
+function SkillsBreakdown({ skills }: { skills?: TechnicalSkills }) {
+  if (!skills) return null
+
   return (
     <Card className="bg-white border-[5px] border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
       <CardHeader className="border-b-[4px] border-black bg-[#0EA5E9] pb-4">
@@ -191,8 +193,8 @@ function SkillsBreakdown({ skills }: { skills: TechnicalSkills }) {
         <div>
           <h4 className="text-base font-black text-black mb-3 uppercase">Primary Languages</h4>
           <div className="flex flex-wrap gap-3">
-            {skills.primary_languages.length > 0 ? (
-              skills.primary_languages.map((lang, i) => (
+            {skills.primary_languages?.length > 0 ? (
+              skills.primary_languages?.map((lang, i) => (
                 <Badge key={i} className="bg-[#00FFFF] text-black border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold px-4 py-2 text-sm rounded-none hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
                   {lang}
                 </Badge>
@@ -206,8 +208,8 @@ function SkillsBreakdown({ skills }: { skills: TechnicalSkills }) {
         <div>
           <h4 className="text-base font-black text-black mb-3 uppercase">Frameworks & Tools</h4>
           <div className="flex flex-wrap gap-3">
-            {skills.frameworks_tools.length > 0 ? (
-              skills.frameworks_tools.map((tool, i) => (
+            {skills.frameworks_tools?.length > 0 ? (
+              skills.frameworks_tools?.map((tool, i) => (
                 <Badge key={i} className="bg-white text-black border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] font-bold px-4 py-2 text-sm rounded-none hover:bg-[#FFEB3B] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
                   {tool}
                 </Badge>
@@ -221,8 +223,8 @@ function SkillsBreakdown({ skills }: { skills: TechnicalSkills }) {
         <div>
           <h4 className="text-base font-black text-black mb-4 uppercase">Domain Expertise</h4>
           <div className="space-y-4">
-            {skills.domain_expertise.length > 0 ? (
-              skills.domain_expertise.map((domain, i) => (
+            {skills.domain_expertise?.length > 0 ? (
+              skills.domain_expertise?.map((domain, i) => (
                 <div key={i} className="border-[4px] border-black p-3 bg-[#F5F5F0]">
                   <div className="text-sm text-black font-bold mb-2">{domain}</div>
                   <div className="relative h-6 bg-white border-[3px] border-black">
@@ -242,10 +244,11 @@ function SkillsBreakdown({ skills }: { skills: TechnicalSkills }) {
 
 // Working Style Insights Component
 function WorkingStyleInsights({ problemSolving, collaboration, workingPatterns }: {
-  problemSolving: ProblemSolving
-  collaboration: CollaborationStyle
-  workingPatterns: WorkingPatterns
+  problemSolving?: ProblemSolving
+  collaboration?: CollaborationStyle
+  workingPatterns?: WorkingPatterns
 }) {
+  if (!problemSolving && !collaboration && !workingPatterns) return null
   return (
     <Card className="bg-white border-[5px] border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
       <CardHeader className="border-b-[4px] border-black bg-[#FF00FF] pb-4">
@@ -261,12 +264,12 @@ function WorkingStyleInsights({ problemSolving, collaboration, workingPatterns }
             Problem-Solving Approach
           </h4>
           <p className="text-black text-sm mb-4 font-bold">
-            {problemSolving.approach || 'No approach data available'}
+            {problemSolving?.approach || 'No approach data available'}
           </p>
-          {problemSolving.strengths.length > 0 && (
+          {problemSolving?.strengths?.length > 0 && (
             <div className="space-y-2">
               <div className="text-xs text-black font-black mb-2 uppercase">Key Strengths:</div>
-              {problemSolving.strengths.map((strength, i) => (
+              {problemSolving?.strengths?.map((strength, i) => (
                 <div key={i} className="text-sm text-black font-bold flex items-start gap-2 bg-white border-[3px] border-black p-2">
                   <Star className="w-4 h-4 text-black mt-0.5 flex-shrink-0" />
                   <span>{strength}</span>
@@ -284,25 +287,25 @@ function WorkingStyleInsights({ problemSolving, collaboration, workingPatterns }
             Collaboration Style
           </h4>
           <div className="space-y-3">
-            {collaboration.communication_quality && (
+            {collaboration?.communication_quality && (
               <div className="bg-white border-[3px] border-black p-2">
                 <span className="text-xs text-black font-black uppercase">Communication: </span>
                 <span className="text-sm text-black font-bold">{collaboration.communication_quality}</span>
               </div>
             )}
-            {collaboration.team_interaction && (
+            {collaboration?.team_interaction && (
               <div className="bg-white border-[3px] border-black p-2">
                 <span className="text-xs text-black font-black uppercase">Team Interaction: </span>
                 <span className="text-sm text-black font-bold">{collaboration.team_interaction}</span>
               </div>
             )}
-            {collaboration.review_participation && (
+            {collaboration?.review_participation && (
               <div className="bg-white border-[3px] border-black p-2">
                 <span className="text-xs text-black font-black uppercase">Code Reviews: </span>
                 <span className="text-sm text-black font-bold">{collaboration.review_participation}</span>
               </div>
             )}
-            {!collaboration.communication_quality && !collaboration.team_interaction && !collaboration.review_participation && (
+            {!collaboration?.communication_quality && !collaboration?.team_interaction && !collaboration?.review_participation && (
               <span className="text-sm text-gray-600 font-bold">No collaboration data available</span>
             )}
           </div>
@@ -316,11 +319,11 @@ function WorkingStyleInsights({ problemSolving, collaboration, workingPatterns }
             Working Patterns
           </h4>
           <div className="space-y-3">
-            {workingPatterns.focus_areas.length > 0 && (
+            {workingPatterns?.focus_areas?.length > 0 && (
               <div>
                 <div className="text-xs text-black font-black mb-2 uppercase">Focus Areas:</div>
                 <div className="flex flex-wrap gap-2">
-                  {workingPatterns.focus_areas.map((area, i) => (
+                  {workingPatterns?.focus_areas?.map((area, i) => (
                     <Badge key={i} className="bg-white text-black border-[3px] border-black font-bold px-3 py-1 rounded-none hover:bg-[#FFD700] transition-all">
                       {area}
                     </Badge>
@@ -331,13 +334,13 @@ function WorkingStyleInsights({ problemSolving, collaboration, workingPatterns }
           </div>
         </div>
 
-        {problemSolving.code_quality_indicators.length > 0 && (
+        {problemSolving?.code_quality_indicators?.length > 0 && (
           <>
             <Separator className="bg-black h-[3px]" />
             <div className="border-[4px] border-black p-4 bg-[#FF00FF]">
               <h4 className="text-base font-black text-white mb-3 uppercase">Code Quality Indicators</h4>
               <div className="space-y-2">
-                {problemSolving.code_quality_indicators.map((indicator, i) => (
+                {problemSolving?.code_quality_indicators?.map((indicator, i) => (
                   <div key={i} className="text-sm text-white font-bold bg-black/20 border-[2px] border-white p-2">• {indicator}</div>
                 ))}
               </div>
@@ -376,10 +379,12 @@ function UniqueInsights({ insights }: { insights: string[] }) {
 }
 
 // Recommendations Component
-function RecommendationsSection({ recommendations }: { recommendations: Recommendations }) {
-  const hasData = recommendations.ideal_projects.length > 0 ||
+function RecommendationsSection({ recommendations }: { recommendations?: Recommendations }) {
+  if (!recommendations) return null
+
+  const hasData = recommendations.ideal_projects?.length > 0 ||
                   recommendations.team_fit ||
-                  recommendations.growth_opportunities.length > 0
+                  recommendations.growth_opportunities?.length > 0
 
   if (!hasData) return null
 
@@ -392,11 +397,11 @@ function RecommendationsSection({ recommendations }: { recommendations: Recommen
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6 pt-6">
-        {recommendations.ideal_projects.length > 0 && (
+        {recommendations.ideal_projects?.length > 0 && (
           <div className="border-[4px] border-black p-4 bg-[#00FFFF]">
             <h4 className="text-base font-black text-black mb-3 uppercase">Ideal Projects</h4>
             <div className="space-y-2">
-              {recommendations.ideal_projects.map((project, i) => (
+              {recommendations.ideal_projects?.map((project, i) => (
                 <div key={i} className="text-sm text-black font-bold flex items-start gap-2 bg-white border-[3px] border-black p-3">
                   <GitBranch className="w-4 h-4 text-black mt-0.5 flex-shrink-0" />
                   <span>{project}</span>
@@ -408,7 +413,7 @@ function RecommendationsSection({ recommendations }: { recommendations: Recommen
 
         {recommendations.team_fit && (
           <>
-            {recommendations.ideal_projects.length > 0 && <Separator className="bg-black h-[3px]" />}
+            {recommendations.ideal_projects?.length > 0 && <Separator className="bg-black h-[3px]" />}
             <div className="border-[4px] border-black p-4 bg-[#FFD700]">
               <h4 className="text-base font-black text-black mb-2 uppercase">Team Fit</h4>
               <p className="text-sm text-black font-bold">{recommendations.team_fit}</p>
@@ -416,13 +421,13 @@ function RecommendationsSection({ recommendations }: { recommendations: Recommen
           </>
         )}
 
-        {recommendations.growth_opportunities.length > 0 && (
+        {recommendations.growth_opportunities?.length > 0 && (
           <>
             <Separator className="bg-black h-[3px]" />
             <div className="border-[4px] border-black p-4 bg-[#84CC16]">
               <h4 className="text-base font-black text-black mb-3 uppercase">Growth Opportunities</h4>
               <div className="space-y-2">
-                {recommendations.growth_opportunities.map((opportunity, i) => (
+                {recommendations.growth_opportunities?.map((opportunity, i) => (
                   <div key={i} className="text-sm text-black font-bold flex items-start gap-2 bg-white border-[3px] border-black p-3">
                     <TrendingUp className="w-4 h-4 text-black mt-0.5 flex-shrink-0" />
                     <span>{opportunity}</span>
