@@ -1,0 +1,80 @@
+{
+  "workflow_name": "SkillSync GitHub Profile Analysis",
+  "workflow_type": "single_agent",
+  "description": "Analyzes GitHub profiles to uncover developer skills, problem-solving approach, collaboration style, and provide actionable insights",
+  "nodes": [
+    {
+      "id": "user_input",
+      "type": "Input",
+      "label": "GitHub Profile Input",
+      "nodeCategory": "input",
+      "position": {
+        "x": 100,
+        "y": 200
+      },
+      "data": {
+        "description": "User provides GitHub username or profile URL",
+        "input_type": "text"
+      }
+    },
+    {
+      "id": "github_analyzer_agent",
+      "type": "Agent",
+      "label": "GitHub Profile Analyzer Agent",
+      "nodeCategory": "agent",
+      "position": {
+        "x": 400,
+        "y": 200
+      },
+      "data": {
+        "agent_id": "6966b2f01f8ceefab631347f",
+        "agent_name": "GitHub Profile Analyzer Agent",
+        "description": "Analyzes GitHub contributions to uncover developer's unique skills, problem-solving approach, domain expertise, communication patterns, and working style. Goes beyond metrics to reveal how engineers think and collaborate.",
+        "provider": "OpenAI",
+        "model": "gpt-4.1",
+        "temperature": 0.4,
+        "top_p": 1,
+        "integrations": ["github"],
+        "github_actions": [
+          "GITHUB_LIST_COMMITS",
+          "GITHUB_LIST_PULL_REQUESTS",
+          "GITHUB_LIST_REPOSITORY_ISSUES",
+          "GITHUB_LIST_BRANCHES"
+        ],
+        "response_schema_file": "response_schemas/github_profile_analyzer_agent_response.json"
+      }
+    },
+    {
+      "id": "analysis_output",
+      "type": "Output",
+      "label": "Developer Profile Analysis",
+      "nodeCategory": "end",
+      "position": {
+        "x": 700,
+        "y": 200
+      },
+      "data": {
+        "description": "Comprehensive developer profile analysis with insights and recommendations",
+        "output_format": "json"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_1",
+      "source": "user_input",
+      "target": "github_analyzer_agent",
+      "type": "default",
+      "label": "GitHub Profile"
+    },
+    {
+      "id": "edge_2",
+      "source": "github_analyzer_agent",
+      "target": "analysis_output",
+      "type": "default",
+      "label": "Analysis Results"
+    }
+  ],
+  "created_at": "2026-01-13T00:00:00Z",
+  "version": "1.0"
+}

@@ -1,0 +1,51 @@
+{
+  "agent_name": "GitHub Profile Analyzer Agent",
+  "agent_id": "6966b2f01f8ceefab631347f",
+  "test_message": "torvalds",
+  "expected_purpose": "analyzer",
+  "timestamp": "2026-01-13T21:03:46.002877",
+  "is_valid_json": true,
+  "validation_errors": [],
+  "actual_response": {
+    "status": "error",
+    "result": {
+      "developer_summary": "Unable to analyze profile due to API tool access failure.",
+      "technical_skills": {
+        "primary_languages": [],
+        "frameworks_tools": [],
+        "domain_expertise": [],
+        "proficiency_level": ""
+      },
+      "problem_solving": {
+        "approach": "",
+        "strengths": [],
+        "code_quality_indicators": []
+      },
+      "collaboration_style": {
+        "communication_quality": "",
+        "team_interaction": "",
+        "review_participation": ""
+      },
+      "working_patterns": {
+        "commit_frequency": "",
+        "consistency": "",
+        "focus_areas": []
+      },
+      "unique_insights": [
+        "API access failure prevented analysis."
+      ],
+      "recommendations": {
+        "ideal_projects": [],
+        "team_fit": "",
+        "growth_opportunities": []
+      }
+    },
+    "metadata": {
+      "agent_name": "GitHub Profile Analyzer Agent",
+      "timestamp": "2024-06-08T15:29:00Z",
+      "repositories_analyzed": 0,
+      "data_points_collected": 0
+    }
+  },
+  "raw_response": "{\n  \"status\": \"error\",\n  \"result\": {\n    \"developer_summary\": \"Unable to analyze profile due to API tool access failure.\",\n    \"technical_skills\": {\n      \"primary_languages\": [],\n      \"frameworks_tools\": [],\n      \"domain_expertise\": [],\n      \"proficiency_level\": \"\"\n    },\n    \"problem_solving\": {\n      \"approach\": \"\",\n      \"strengths\": [],\n      \"code_quality_indicators\": []\n    },\n    \"collaboration_style\": {\n      \"communication_quality\": \"\",\n      \"team_interaction\": \"\",\n      \"review_participation\": \"\"\n    },\n    \"working_patterns\": {\n      \"commit_frequency\": \"\",\n      \"consistency\": \"\",\n      \"focus_areas\": []\n    },\n    \"unique_insights\": [\n      \"API access failure prevented analysis.\"\n    ],\n    \"recommendations\": {\n      \"ideal_projects\": [],\n      \"team_fit\": \"\",\n      \"growth_opportunities\": []\n    }\n  },\n  \"metadata\": {\n    \"agent_name\": \"GitHub Profile Analyzer Agent\",\n    \"timestamp\": \"2024-06-08T15:29:00Z\",\n    \"repositories_analyzed\": 0,\n    \"data_points_collected\": 0\n  }\n}"
+}

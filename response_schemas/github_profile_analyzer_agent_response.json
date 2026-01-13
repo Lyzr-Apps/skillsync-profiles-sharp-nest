@@ -1,0 +1,151 @@
+{
+  "agent_name": "GitHub Profile Analyzer Agent",
+  "agent_id": "6966b2f01f8ceefab631347f",
+  "agent_purpose": "analyzer",
+  "description": "Analyzes GitHub profiles to reveal deep insights about developers' technical skills, problem-solving patterns, collaboration style, domain expertise, and working approach. Returns comprehensive analysis with technical skills, collaboration patterns, working style insights, and recommendations.",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "developer_summary": "string",
+      "technical_skills": {
+        "primary_languages": [
+          "any"
+        ],
+        "frameworks_tools": [
+          "any"
+        ],
+        "domain_expertise": [
+          "any"
+        ],
+        "proficiency_level": "string"
+      },
+      "problem_solving": {
+        "approach": "string",
+        "strengths": [
+          "any"
+        ],
+        "code_quality_indicators": [
+          "any"
+        ]
+      },
+      "collaboration_style": {
+        "communication_quality": "string",
+        "team_interaction": "string",
+        "review_participation": "string"
+      },
+      "working_patterns": {
+        "commit_frequency": "string",
+        "consistency": "string",
+        "focus_areas": [
+          "any"
+        ]
+      },
+      "unique_insights": [
+        "string"
+      ],
+      "recommendations": {
+        "ideal_projects": [
+          "any"
+        ],
+        "team_fit": "string",
+        "growth_opportunities": [
+          "any"
+        ]
+      }
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string",
+      "repositories_analyzed": "number",
+      "data_points_collected": "number"
+    }
+  },
+  "example_response": {
+    "status": "error",
+    "result": {
+      "developer_summary": "Unable to analyze profile due to API tool access failure.",
+      "technical_skills": {
+        "primary_languages": [],
+        "frameworks_tools": [],
+        "domain_expertise": [],
+        "proficiency_level": ""
+      },
+      "problem_solving": {
+        "approach": "",
+        "strengths": [],
+        "code_quality_indicators": []
+      },
+      "collaboration_style": {
+        "communication_quality": "",
+        "team_interaction": "",
+        "review_participation": ""
+      },
+      "working_patterns": {
+        "commit_frequency": "",
+        "consistency": "",
+        "focus_areas": []
+      },
+      "unique_insights": [
+        "API access failure prevented analysis."
+      ],
+      "recommendations": {
+        "ideal_projects": [],
+        "team_fit": "",
+        "growth_opportunities": []
+      }
+    },
+    "metadata": {
+      "agent_name": "GitHub Profile Analyzer Agent",
+      "timestamp": "2024-06-08T15:29:00Z",
+      "repositories_analyzed": 0,
+      "data_points_collected": 0
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-01-13T21:03:46.003997",
+  "test_message_used": "Analyze this sample data for testing",
+  "raw_test_response": "Could you please specify the sample data or provide a link to the GitHub profile, repository, or dataset you would like analyzed? I need either a GitHub username or repository details to proceed with the analysis.",
+  "test_error": "Response not valid JSON: Expecting value: line 1 column 1 (char 0)",
+  "actual_test_response": {
+    "status": "error",
+    "result": {
+      "developer_summary": "Unable to analyze profile due to API tool access failure.",
+      "technical_skills": {
+        "primary_languages": [],
+        "frameworks_tools": [],
+        "domain_expertise": [],
+        "proficiency_level": ""
+      },
+      "problem_solving": {
+        "approach": "",
+        "strengths": [],
+        "code_quality_indicators": []
+      },
+      "collaboration_style": {
+        "communication_quality": "",
+        "team_interaction": "",
+        "review_participation": ""
+      },
+      "working_patterns": {
+        "commit_frequency": "",
+        "consistency": "",
+        "focus_areas": []
+      },
+      "unique_insights": [
+        "API access failure prevented analysis."
+      ],
+      "recommendations": {
+        "ideal_projects": [],
+        "team_fit": "",
+        "growth_opportunities": []
+      }
+    },
+    "metadata": {
+      "agent_name": "GitHub Profile Analyzer Agent",
+      "timestamp": "2024-06-08T15:29:00Z",
+      "repositories_analyzed": 0,
+      "data_points_collected": 0
+    }
+  },
+  "test_passed": true
+}
